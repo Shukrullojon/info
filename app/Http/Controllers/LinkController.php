@@ -33,15 +33,16 @@ class LinkController extends Controller
     public function store(Request $request)
     {
         $validated = Validator::make($request->all(),[
-            'link' => 'required|string|max:100',
+            'link' => 'required|string',
             'type' => 'required|integer|in:1,2',
+            'info' => 'nullable|string',
             'status' => 'required|integer|in:0,1',
         ]);
         if ($validated->fails()){
             return back()->withInput()->withErrors($validated);
         }
-        Position::create($request->all());
-        return redirect()->route('position.index')->with('success','Link created successfully');
+        Link::create($request->all());
+        return redirect()->route('link.index')->with('success','Link created successfully');
     }
 
     /**
@@ -70,7 +71,8 @@ class LinkController extends Controller
     public function update(Request $request, Link $link)
     {
         $validated = Validator::make($request->all(),[
-            'link' => 'required|string|max:100',
+            'link' => 'required|string',
+            'info' => 'nullable|string',
             'type' => 'required|integer|in:1,2',
             'status' => 'required|integer|in:0,1',
         ]);

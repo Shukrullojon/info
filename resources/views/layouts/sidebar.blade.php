@@ -19,9 +19,36 @@
 
                 {{--@can('link-index')--}}
                     <li class="nav-item">
+                        <a href="" class="nav-link {{ Request::is('sms*') ? "active":'' }}">
+                            <i class="fa fa-sms"></i>
+                            <p>Sms Management</p>
+                        </a>
+                    </li>
+                {{--@endcan--}}
+
+                {{--@can('link-index')--}}
+                    <li class="nav-item">
                         <a href="{{ route('link.index') }}" class="nav-link {{ Request::is('link*') ? "active":'' }}">
                             <i class="fa fa-link"></i>
                             <p>Links</p>
+                        </a>
+                    </li>
+                {{--@endcan--}}
+
+                {{--@can('link-index')--}}
+                    <li class="nav-item">
+                        <a href="{{ route('student.index') }}" class="nav-link {{ Request::is('student*') ? "active":'' }}">
+                            <i class="fa fa-people-arrows"></i>
+                            <p>Students</p>
+                        </a>
+                    </li>
+                {{--@endcan--}}
+
+                {{--@can('link-index')--}}
+                    <li class="nav-item">
+                        <a href="{{ route('record.index') }}" class="nav-link {{ Request::is('record*') ? "active":'' }}">
+                            <i class="fa fa-record-vinyl"></i>
+                            <p>Records</p>
                         </a>
                     </li>
                 {{--@endcan--}}

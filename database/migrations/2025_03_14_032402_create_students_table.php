@@ -16,14 +16,14 @@ return new class extends Migration
             $table->string('name',50)->nullable();
             $table->string('surname',50)->nullable();
             $table->string('given_name',70)->nullable();
-            $table->date('jdu_id',20)->nullable();
-            $table->date('phone',20)->nullable();
-            $table->date('parent_phone',20)->nullable();
+            $table->string('jdu_id',30)->nullable();
+            $table->string('phone',20)->nullable();
+            $table->string('parent_phone',20)->nullable();
             $table->tinyInteger("is_sms")->default(1)->comment("0 -> can not send sms, 1 -> can send sms");
             $table->tinyInteger("is_send")->default(1)->comment("0 -> need to send sms, 1 -> already send sms");
             $table->integer("total_score")->default(0);
             $table->integer("total_attendance")->default(0);
-            $table->tinyInteger("status")->default(1);
+            $table->tinyInteger("status")->default(1)->comment("1 -> study, 4 -> graduated");
             $table->timestamps();
         });
     }

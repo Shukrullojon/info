@@ -21,8 +21,10 @@ return new class extends Migration
             $table->json("attendances")->nullable();
             $table->float("total_current_grade")->nullable();
             $table->float("total_full_grade")->nullable();
+            $table->float("assign_percentage")->nullable();
             $table->float("total_lessons")->nullable();
             $table->float("presents")->nullable();
+            $table->float("attend_percentage")->nullable();
             $table->timestamps();
         });
     }
