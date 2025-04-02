@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
+Route::get('/info/{id?}', [App\Http\Controllers\HomeController::class, 'info']);
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'profile']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

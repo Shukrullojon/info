@@ -66,4 +66,19 @@ class Record extends Model
     {
         return $this->belongsTo(Student::class);
     }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
+    }
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class);
+    }
 }

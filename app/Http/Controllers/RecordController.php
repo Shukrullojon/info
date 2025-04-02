@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Record;
 use Illuminate\Http\Request;
 
 class RecordController extends Controller
@@ -11,7 +12,10 @@ class RecordController extends Controller
      */
     public function index()
     {
-        //
+        $records = Record::latest()->paginate(20);
+        return view('record.index',[
+            'records' => $records,
+        ]);
     }
 
     /**
@@ -33,9 +37,11 @@ class RecordController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Record $record)
     {
-        //
+        return view('record.show',[
+            'record' => $record,
+        ]);
     }
 
     /**
@@ -57,7 +63,7 @@ class RecordController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy()
     {
         //
     }

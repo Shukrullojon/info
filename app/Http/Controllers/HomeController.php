@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Show;
+use App\Models\Token;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,7 +13,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+/*    public function __construct()
     {
         $this->middleware(function ($request, $next) {
             $actions = ['index', 'profile'];
@@ -22,16 +24,30 @@ class HomeController extends Controller
             }
             return $next($request);
         });
-    }
+    }*/
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request, $id = null)
     {
-        return view('home');
+        return view('home',[]);
+    }
+
+    public function info(Request $request, $id = null)
+    {
+        $token = Token::where('token',$id)->first();
+        $student = $token->student ?? [];
+        if (!is_null($token)) {
+            Show::create([
+                'token_id' => $token->id,
+            ]);
+        }
+        return view('info',[
+            'student' => $student
+        ]);
     }
 
     public function profile()
