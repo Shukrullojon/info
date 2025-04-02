@@ -10,7 +10,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 @can('home-index')
                     <li class="nav-item">
-                        <a href="{{ route('home') }}" class="nav-link {{ Request::is('home*') ? "active":'' }}">
+                        <a href="{{ route('home') }}" class="nav-link {{ Request::is('admin/home*') ? "active":'' }}">
                             <i class="fa fa-home"></i>
                             <p>Home</p>
                         </a>
@@ -19,7 +19,7 @@
 
                 {{--@can('link-index')--}}
                     <li class="nav-item">
-                        <a href="" class="nav-link {{ Request::is('sms*') ? "active":'' }}">
+                        <a href="" class="nav-link {{ Request::is('admin/sms*') ? "active":'' }}">
                             <i class="fa fa-sms"></i>
                             <p>Sms Management</p>
                         </a>
@@ -28,7 +28,7 @@
 
                 {{--@can('link-index')--}}
                     <li class="nav-item">
-                        <a href="{{ route('link.index') }}" class="nav-link {{ Request::is('link*') ? "active":'' }}">
+                        <a href="{{ route('link.index') }}" class="nav-link {{ Request::is('admin/link*') ? "active":'' }}">
                             <i class="fa fa-link"></i>
                             <p>Links</p>
                         </a>
@@ -37,7 +37,7 @@
 
                 {{--@can('link-index')--}}
                     <li class="nav-item">
-                        <a href="{{ route('student.index') }}" class="nav-link {{ Request::is('student*') ? "active":'' }}">
+                        <a href="{{ route('student.index') }}" class="nav-link {{ Request::is('admin/student*') ? "active":'' }}">
                             <i class="fa fa-people-arrows"></i>
                             <p>Students</p>
                         </a>
@@ -46,7 +46,7 @@
 
                 {{--@can('link-index')--}}
                     <li class="nav-item">
-                        <a href="{{ route('record.index') }}" class="nav-link {{ Request::is('record*') ? "active":'' }}">
+                        <a href="{{ route('record.index') }}" class="nav-link {{ Request::is('admin/record*') ? "active":'' }}">
                             <i class="fa fa-record-vinyl"></i>
                             <p>Records</p>
                         </a>
@@ -54,8 +54,8 @@
                 {{--@endcan--}}
 
                 @canany(['role-index','user-index'])
-                    <li class="nav-item {{ (Request::is('roles*') or Request::is('permissions*') or Request::is('user*')) ? 'menu-open' : '' }}">
-                        <a href="#" class="nav-link {{ (Request::is('roles*') or Request::is('permissions*') or Request::is('user*')) ? 'active' : '' }}">
+                    <li class="nav-item {{ (Request::is('admin/roles*') or Request::is('admin/permissions*') or Request::is('admin/user*')) ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ (Request::is('admin/roles*') or Request::is('admin/permissions*') or Request::is('admin/user*')) ? 'active' : '' }}">
                             <i class="nav-icon fa fa-cog"></i>
                             <p>
                                 Settings
@@ -65,7 +65,7 @@
                         <ul class="nav nav-treeview">
                             @can('user-index')
                                 <li class="nav-item">
-                                    <a href="{{ route('user.index') }}" class="nav-link {{ Request::is('user*') ? 'active' : '' }}">
+                                    <a href="{{ route('user.index') }}" class="nav-link {{ Request::is('admin/user*') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Admins</p>
                                     </a>
@@ -74,7 +74,7 @@
 
                             @can('role-index')
                                 <li class="nav-item">
-                                    <a href="{{ route('roles.index') }}" class="nav-link {{ Request::is('roles*') ? 'active' : '' }}">
+                                    <a href="{{ route('roles.index') }}" class="nav-link {{ Request::is('admin/roles*') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Roles</p>
                                     </a>

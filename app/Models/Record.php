@@ -47,7 +47,7 @@ class Record extends Model
 
     private static function updateStudentPercentage($model)
     {
-        $record = Record::where('student_id', 485)
+        $record = Record::where('student_id', $model->id)
             ->selectRaw('
                 SUM(total_current_grade) as total_current_grade,
                 SUM(total_full_grade) as total_full_grade,
