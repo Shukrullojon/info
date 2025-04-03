@@ -62,7 +62,7 @@
                         color: "bg-cyan-600",
                         lessons: [
                                 @foreach($balls as $b)
-                                    { lesson: "{{ $b['title'] }}", mark: "5" },
+                                    { lesson: "{{ $b['title'] }}", mark: "{{$b['current_grade']}}" },
                                 @endforeach
                         ],
                     },

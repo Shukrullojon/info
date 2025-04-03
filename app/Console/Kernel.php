@@ -12,8 +12,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        //$schedule->command('changehour employee')->dailyAt("01:00");
-        $schedule->command('tt-generate')->everyMinute();
+        $schedule
+            ->command('data link')
+            ->everyMinute()
+            ->appendOutputTo(storage_path().'/logs/laravel_output.log');
     }
 
     /**

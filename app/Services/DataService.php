@@ -42,7 +42,7 @@ class DataService
                     if (empty($student)) {
                         continue;
                     }
-                    Record::updateOrCreate(
+                    $record = Record::updateOrCreate(
                         [
                             'student_id' => $student->id,
                             'group_id' => $group->id,
