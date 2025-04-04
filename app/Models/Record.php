@@ -22,6 +22,7 @@ class Record extends Model
                 'total_current_grade' => $data['total_current_grade'] ?? 0,
                 'total_full_grade' => $data['total_full_grade'] ?? 0,
                 'assign_percentage' => $data['total_full_grade'] == 0 ? 0 : round(($data['total_current_grade'] / $data['total_full_grade']) * 100),
+                'checked' => 1,
             ];
         } else if (isset($data['attendances']) and is_array($data['attendances'])) {
             $update_info = [
@@ -29,6 +30,7 @@ class Record extends Model
                 'total_lessons' => $data['total_lessons'] ?? 0,
                 'presents' => $data['presents'] ?? 0,
                 'attend_percentage' => $data['total_lessons'] == 0 ? 0 : round(($data['presents'] / $data['total_lessons']) * 100),
+                'checked' => 1,
             ];
         }
         return $update_info;

@@ -18,8 +18,13 @@ class DataService
     public static function link()
     {
         $links = Link::where('status',1)->get();
+        Record::where('id','>','0')->update([
+            'checked' => 0,
+        ]);
         foreach ($links as $link) {
             $datas = DataGateway::send($link->link);
+            if (is_null($datas))
+                return true;
             if (isset($datas['data'])){
                 foreach ($datas['data'] as $data) {
                     $group = Group::firstOrCreate([
@@ -54,6 +59,9 @@ class DataService
                 }
             }
         }
+        Record::where([
+            'checked' => 0,
+        ])->delete();
     }
 
     public static function student(){
