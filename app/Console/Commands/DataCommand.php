@@ -15,6 +15,7 @@ class DataCommand extends Command
 
     protected $description = 'Command description';
 
+
     public function handle()
     {
         $method = $this->argument('arg');

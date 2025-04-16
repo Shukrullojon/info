@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule
             ->command('data link')
-            ->everyMinute()
+            ->everyTenMinutes()
             ->appendOutputTo(storage_path().'/logs/laravel_output.log');
     }
 

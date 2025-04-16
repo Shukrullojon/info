@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\JsonDecodeEncodeCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +15,10 @@ class Record extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        //'assignments' => JsonDecodeEncodeCast::class,
+        //'attendances' => JsonDecodeEncodeCast::class,
+    ];
     public static function updateInfo($data)
     {
         if (isset($data['assignments']) and is_array($data['assignments'])) {

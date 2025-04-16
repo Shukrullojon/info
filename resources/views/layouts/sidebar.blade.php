@@ -17,6 +17,13 @@
                     </li>
                 @endcan
 
+                <li class="nav-item">
+                    <a href="{{ route('report.index') }}" class="nav-link {{ Request::is('admin/report*') ? "active":'' }}">
+                        <i class="fa fa-chart-bar"></i>
+                        <p>Report</p>
+                    </a>
+                </li>
+
                 {{--@can('link-index')--}}
                     <li class="nav-item">
                         <a href="" class="nav-link {{ Request::is('admin/sms*') ? "active":'' }}">

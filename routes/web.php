@@ -12,7 +12,7 @@ Route::group(['prefix' => "admin",'middleware' => ['auth']], function () {
     Route::resource('link', \App\Http\Controllers\LinkController::class);
     Route::resource('student', \App\Http\Controllers\StudentController::class);
     Route::resource('record', \App\Http\Controllers\RecordController::class);
-
+    Route::get('/report', [App\Http\Controllers\ReportController::class, 'index'])->name('report.index');
 
     Route::resource('roles', \App\Http\Controllers\RoleController::class);
     Route::resource('permissions', \App\Http\Controllers\PermissionController::class);
