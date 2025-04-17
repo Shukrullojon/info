@@ -17,6 +17,7 @@ class DataService
 {
     public static function link()
     {
+        // link loaded column 0
         $links = Link::where('status',1)->get();
         Record::where('id','>','0')->update([
             'checked' => 0,
@@ -38,9 +39,9 @@ class DataService
                         'status' => 1,
                     ]);
                     $teacher = Teacher::firstOrCreate([
-                        'jdu_id' => $data['subject_jdu_id'] ?? 0,
+                        'jdu_id' => $data['teacher_id'] ?? 0,
                     ],[
-                        'name' => $data['subject_name'] ?? 0,
+                        'name' => $data['teacher_name'] ?? 0,
                         'status' => 1,
                     ]);
                     $student = Student::where('jdu_id',$data['student_id'])->first();
