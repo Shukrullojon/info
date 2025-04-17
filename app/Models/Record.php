@@ -22,23 +22,23 @@ class Record extends Model
     public static function updateInfo($data)
     {
         if (isset($data['assignments']) and is_array($data['assignments'])) {
-            $update_info = [
-                'assignments' => json_encode($data['assignments'] ?? [], true),
+            return [
+                'assignments' => json_encode($data['assignments'], true),
                 'total_current_grade' => $data['total_current_grade'] ?? 0,
                 'total_full_grade' => $data['total_full_grade'] ?? 0,
                 'assign_percentage' => $data['total_full_grade'] == 0 ? 0 : round(($data['total_current_grade'] / $data['total_full_grade']) * 100),
                 'checked' => 1,
             ];
-        } else if (isset($data['attendances']) and is_array($data['attendances'])) {
-            $update_info = [
+        } else if (isset($data['attendances']) and is_array($data['attendances']) and !is_null($data['total_lessons']) and !is_null($data['presents'])) {
+            return [
                 'attendances' => json_encode($data['attendances'], true),
-                'total_lessons' => $data['total_lessons'] ?? 0,
-                'presents' => $data['presents'] ?? 0,
+                'total_lessons' => $data['total_lessons'],
+                'presents' => $data['presents'],
                 'attend_percentage' => $data['total_lessons'] == 0 ? 0 : round(($data['presents'] / $data['total_lessons']) * 100),
                 'checked' => 1,
             ];
         }
-        return $update_info;
+        return [];
     }
 
     public static function boot()
