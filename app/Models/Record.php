@@ -21,11 +21,11 @@ class Record extends Model
     ];
     public static function updateInfo($data)
     {
-        if (isset($data['assignments']) and is_array($data['assignments'])) {
+        if (isset($data['assignments']) and is_array($data['assignments']) and !is_null($data['total_full_grade']) and !is_null($data['total_current_grade'])) {
             return [
                 'assignments' => json_encode($data['assignments'], true),
-                'total_current_grade' => $data['total_current_grade'] ?? 0,
-                'total_full_grade' => $data['total_full_grade'] ?? 0,
+                'total_current_grade' => $data['total_current_grade'],
+                'total_full_grade' => $data['total_full_grade'],
                 'assign_percentage' => $data['total_full_grade'] == 0 ? 0 : round(($data['total_current_grade'] / $data['total_full_grade']) * 100),
                 'checked' => 1,
             ];
