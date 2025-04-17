@@ -6,6 +6,7 @@ use App\Casts\JsonDecodeEncodeCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class Record extends Model
 {
@@ -21,22 +22,30 @@ class Record extends Model
     ];
     public static function updateInfo($data)
     {
-        if (isset($data['assignments']) and is_array($data['assignments']) and !is_null($data['total_full_grade']) and !is_null($data['total_current_grade'])) {
-            return [
-                'assignments' => json_encode($data['assignments'], true),
-                'total_current_grade' => $data['total_current_grade'],
-                'total_full_grade' => $data['total_full_grade'],
-                'assign_percentage' => $data['total_full_grade'] == 0 ? 0 : round(($data['total_current_grade'] / $data['total_full_grade']) * 100),
-                'checked' => 1,
-            ];
-        } else if (isset($data['attendances']) and is_array($data['attendances']) and !is_null($data['total_lessons']) and !is_null($data['presents'])) {
-            return [
-                'attendances' => json_encode($data['attendances'], true),
-                'total_lessons' => $data['total_lessons'],
-                'presents' => $data['presents'],
-                'attend_percentage' => $data['total_lessons'] == 0 ? 0 : round(($data['presents'] / $data['total_lessons']) * 100),
-                'checked' => 1,
-            ];
+        try {
+            if (isset($data['assignments']) and is_array($data['assignments']) and !is_null($data['total_full_grade']) and !is_null($data['total_current_grade'])) {
+                return [
+                    'assignments' => json_encode($data['assignments'], true),
+                    'total_current_grade' => $data['total_current_grade'],
+                    'total_full_grade' => $data['total_full_grade'],
+                    'assign_percentage' => $data['total_full_grade'] == 0 ? 0 : round(($data['total_current_grade'] / $data['total_full_grade']) * 100),
+                    'checked' => 1,
+                ];
+            } else if (isset($data['attendances']) and is_array($data['attendances']) and !is_null($data['total_lessons']) and !is_null($data['presents'])) {
+                return [
+                    'attendances' => json_encode($data['attendances'], true),
+                    'total_lessons' => $data['total_lessons'],
+                    'presents' => $data['presents'],
+                    'attend_percentage' => $data['total_lessons'] == 0 ? 0 : round(($data['presents'] / $data['total_lessons']) * 100),
+                    'checked' => 1,
+                ];
+            }
+        }catch (\Exception $exception){
+            Log::error('Xatolik yuz berdi: ' . $exception->getMessage(), [
+                'file' => $exception->getFile(),
+                'line' => $exception->getLine(),
+                'trace' => $exception->getTraceAsString(),
+            ]);
         }
         return [];
     }
