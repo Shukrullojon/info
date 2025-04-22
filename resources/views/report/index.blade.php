@@ -35,12 +35,17 @@
                                 <th>Group</th>
                                 <th>Subject</th>
                                 <th>Teacher</th>
-                                <th>Rate</th>
-                                <th>Attend</th>
                             </tr>
                             </thead>
                             <tbody>
-
+                                @if($report)
+                                    <tr>
+                                        <td>{{ $report->StudentNumber }}</td>
+                                        <td>{{ $report->GroupsNumber }}</td>
+                                        <td>{{ $report->SubjectNumber }}</td>
+                                        <td>{{ $report->TeacherNumber }}</td>
+                                    </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -87,24 +92,38 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-6 col-sm-6 col-md-6">
+                        {{--<div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>From:</strong>
                                 {!! Form::date('from', request()->get('from'), ['placeholder' => 'From','class' => 'form-control']) !!}
+                            </div>
+                        </div>--}}
+
+                        {{--<div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <strong>To:</strong>
+                                {!! Form::date('to', request()->get('to'), ['placeholder' => 'To','class' => 'form-control']) !!}
+                            </div>
+                        </div>--}}
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <strong>Attend:</strong>
+                                {!! Form::text('attend', request()->get('attend'), ['placeholder' => 'Attend','class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <strong>To:</strong>
-                                {!! Form::date('to', request()->get('to'), ['placeholder' => 'To','class' => 'form-control']) !!}
+                                <strong>Assign:</strong>
+                                {!! Form::text('assign', request()->get('assign'), ['placeholder' => 'Assign','class' => 'form-control']) !!}
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Filter</button>
+                    <a class="btn btn-default" href="{{ route("report.index") }}">Clear</a>
+                    <button type="submit" name="submit" class="btn btn-primary">Filter</button>
                 </div>
                 {!! Form::close() !!}
             </div>

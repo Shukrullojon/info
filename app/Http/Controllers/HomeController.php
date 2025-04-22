@@ -56,11 +56,6 @@ class HomeController extends Controller
 
     public function profile()
     {
-        if (true){
-            throw new BalanceTooLowException();
-        }
-        $record = Record::find(1);
-        dd($record->assignments, $record->attendances);
         return view('profile');
     }
 }
