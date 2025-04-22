@@ -15,32 +15,6 @@ class LinkController extends Controller
      */
     public function index()
     {
-        // Post yaratish
-        $post = Post::create(['title' => 'My First Post']);
-
-// Video yaratish
-        $video = Video::create(['title' => 'My First Video']);
-
-// Commentlarni post va video uchun saqlash
-        $post->comments()->create(['comment' => 'Great Post!']);
-        $video->comments()->create(['comment' => 'Great Video!']);
-
-// Post va video uchun commentlarni olish
-        $postComments = $post->comments;
-        $videoComments = $video->comments;
-
-// Natijalar
-        foreach ($postComments as $comment) {
-            echo "Post Comment: " . $comment->comment . "\n";
-        }
-
-        foreach ($videoComments as $comment) {
-            echo "Video Comment: " . $comment->comment . "\n";
-        }
-        dd();
-
-
-
         $links = Link::latest()->paginate(20);
         return view('link.index',[
             'links' => $links,
