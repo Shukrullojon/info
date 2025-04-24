@@ -3,7 +3,7 @@
     <!-- Student Info Header -->
     @if(!empty($student))
         <div class="max-w-4xl mx-auto mb-6 bg-white shadow-lg rounded-md p-4 flex items-center space-x-4">
-            <img src="{{ asset("public/rating/student.png") }}" alt="Student Icon" class="w-16 h-16 rounded-full border border-gray-300">
+            <img src="{{ asset("rating/student.png") }}" alt="Student Icon" class="w-16 h-16 rounded-full border border-gray-300">
             <div>
                 <h1 class="text-xl font-bold text-gray-900"> <span class="text-gray-900">{{ $student->name ?? "" }}</span></h1>
                 <p class="text-sm font-bold text-gray-500">Student ID: <span class="text-gray-600">{{ $student->jdu_id ?? "" }}</span></p>
