@@ -31,17 +31,18 @@ class DataCommand extends Command
         return 0;
     }
 
-    public function student()
-    {
-        DataService::student();
-        return 0;
-    }
-
     public function percentage()
     {
         DataService::percentage();
         return 0;
     }
+
+    public function truncate()
+    {
+        DataService::truncate();
+        return 0;
+    }
+
     public function sms_parent()
     {
         $students = Student::select(
