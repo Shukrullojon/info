@@ -12,10 +12,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule
-            ->command('data link')
-            ->everyTenMinutes()
-            ->appendOutputTo(storage_path().'/logs/laravel_output.log');
+        $schedule->command('data link')->everyTenMinutes()->appendOutputTo(storage_path().'/logs/laravel_output.log');
+        $schedule->command('data percentage')->everyTenMinutes()->appendOutputTo(storage_path().'/logs/laravel_output.log');
+        $schedule->command('data truncate')->dailyAt("01:00")->appendOutputTo(storage_path().'/logs/laravel_output.log');
     }
 
     /**
