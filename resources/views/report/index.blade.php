@@ -35,6 +35,8 @@
                                 <th>Group</th>
                                 <th>Subject</th>
                                 <th>Teacher</th>
+                                <th>Attendances</th>
+                                <th>Grade</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -44,6 +46,8 @@
                                         <td>{{ $report->GroupsNumber }}</td>
                                         <td>{{ $report->SubjectNumber }}</td>
                                         <td>{{ $report->TeacherNumber }}</td>
+                                        <td>{{ round($report->AverageAttendPercentage) }} %</td>
+                                        <td>{{ round($report->AverageAssignPercentage) }} %</td>
                                     </tr>
                                 @endif
                             </tbody>
