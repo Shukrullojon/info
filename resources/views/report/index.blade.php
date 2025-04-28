@@ -78,37 +78,24 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Group:</strong>
-                                {!! Form::select('group_id', $groups, request()->get('group_id'), ['placeholder' => '','class' => 'form-control']) !!}
+                                {!! Form::select('group_id[]', $groups, request()->get('group_id'), ['class' => 'form-control select2', 'multiple' => 'multiple']) !!}
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Subject:</strong>
-                                {!! Form::select('subject_id', $subjects, request()->get('subject_id'), ['placeholder' => '','class' => 'form-control']) !!}
+                                {!! Form::select('subject_id[]', $subjects, request()->get('subject_id'), ['class' => 'form-control select2', 'multiple' => 'multiple']) !!}
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Teacher:</strong>
-                                {!! Form::select('teacher_id', $teachers, request()->get('teacher_id'), ['placeholder' => '','class' => 'form-control']) !!}
+                                {!! Form::select('teacher_id[]', $teachers, request()->get('teacher_id'), ['class' => 'form-control select2', 'multiple' => 'multiple']) !!}
                             </div>
                         </div>
 
-                        {{--<div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <strong>From:</strong>
-                                {!! Form::date('from', request()->get('from'), ['placeholder' => 'From','class' => 'form-control']) !!}
-                            </div>
-                        </div>--}}
-
-                        {{--<div class="col-xs-6 col-sm-6 col-md-6">
-                            <div class="form-group">
-                                <strong>To:</strong>
-                                {!! Form::date('to', request()->get('to'), ['placeholder' => 'To','class' => 'form-control']) !!}
-                            </div>
-                        </div>--}}
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Attend:</strong>

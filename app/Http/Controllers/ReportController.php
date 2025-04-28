@@ -17,13 +17,13 @@ class ReportController extends Controller
         $teachers = Teacher::latest()->get()->pluck('name', 'id');
         $query = DB::table('records');
         if ($request->filled('group_id')) {
-            $query->where('group_id', $request->group_id);
+            $query->whereIn('group_id', $request->group_id);
         }
         if ($request->filled('subject_id')) {
-            $query->where('subject_id', $request->subject_id);
+            $query->whereIn('subject_id', $request->subject_id);
         }
         if ($request->filled('teacher_id')) {
-            $query->where('teacher_id', $request->teacher_id);
+            $query->whereIn('teacher_id', $request->teacher_id);
         }
         if ($request->filled('attend')) {
             $query->where('attend_percentage', '>', $request->attend);
