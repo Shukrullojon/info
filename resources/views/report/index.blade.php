@@ -12,6 +12,40 @@
                             <span class="fas fa-filter"></span> Filter
                         </button>
                     </div>
+
+                    {{-- Filter natijalari --}}
+                    @if(request()->has('teacher_id') || request()->has('subject_id') || request()->has('group_id'))
+                        <div class="card-body pt-0">
+                            <div class="mb-2">
+                                @if(request()->filled('teacher_id'))
+                                    <strong>Teachers:</strong>
+                                    <ul>
+                                        @foreach($teachers->only(request()->teacher_id ?? []) as $teacher)
+                                            <li>{{ $teacher }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+
+                                @if(request()->filled('subject_id'))
+                                    <strong>Subjects:</strong>
+                                    <ul>
+                                        @foreach($subjects->only(request()->subject_id ?? []) as $subject)
+                                            <li>{{ $subject }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+
+                                @if(request()->filled('group_id'))
+                                    <strong>Groups:</strong>
+                                    <ul>
+                                        @foreach($groups->only(request()->group_id ?? []) as $group)
+                                            <li>{{ $group }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </div>
+                        </div>
+                    @endif
                     <!-- /.card-header -->
                     <div class="card-body">
                         @if ($message = Session::get('success'))
