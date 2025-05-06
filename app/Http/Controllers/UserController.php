@@ -59,7 +59,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email|max:50',
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
-            'roles' => new \App\Rules\ValidRoles,
+            'roles' => new \App\Rules\ValidRoles(),
         ]);
         if ($validated->fails()){
             return back()->withInput()->withErrors($validated);
